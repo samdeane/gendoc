@@ -6,7 +6,6 @@
 # See README.md for an explanation of what this script does and how to use it.
 
 git=`xcrun --find git`
-docsetutil=`xcrun --find docsetutil`
 originaldirectory=`git rev-parse --show-toplevel`
 codebranch=`$git rev-parse --abbrev-ref HEAD`
 docbranch="gh-pages"
@@ -67,7 +66,6 @@ appledoc \
     --create-docset \
     --install-docset \
     --publish-docset \
-    --docsetutil-path "$docsetutil" \
     --docset-atom-filename "docset.atom" \
     --docset-feed-url "http://$githubuser.github.com/$projectname/$docdirectory/%DOCSETATOMFILENAME" \
     --docset-package-url "http://$githubuser.github.com/$projectname/$docdirectory/%DOCSETPACKAGEFILENAME" \

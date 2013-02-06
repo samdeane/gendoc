@@ -111,6 +111,7 @@ $git push origin $docbranch
 
 # remove temporary directory
 rm -rf "$tempdir"
+#open "$tempdir"
 
 popd > /dev/null
 

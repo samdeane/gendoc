@@ -98,6 +98,9 @@ mkdir "$docdirectory"
 mv -v ../html/* "$docdirectory"
 mv -v ../publish/* "$docdirectory"
 
+# make a redirect to the index to work around a problem with the generated pages - some of them end up at the wrong level
+echo "<html><head><title>$projectname Reference</title><meta http-equiv=\"REFRESH\" content=\"0;url=../index.html\"></head><body></body></html>" >> "$docdirectory/docs/index.html"
+
 # add directory and commit with default message
 $git add -f -v "$docdirectory"
 if $editcommit; then
@@ -110,8 +113,8 @@ fi
 $git push origin $docbranch
 
 # remove temporary directory
-rm -rf "$tempdir"
-#open "$tempdir"
+#rm -rf "$tempdir"
+open "$tempdir/branch/$docdirectory/index.html"
 
 popd > /dev/null
 

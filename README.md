@@ -13,8 +13,8 @@ It then optionally pushes the new documentation back up to github (see Options b
 This script assumes:
 - the name of the root folder is the name of the project
 - your appledoc templates are in ~/.appledoc (can be a symlink)
-- you have a GlobalSettings.plist file in your appledoc templates folder
-- you've set values in GlobalSettings.plist for --project-company, --company-id
+- you have a GlobalSettings.plist file in your appledoc templates folder, and/or a .appledoc.plist file at the root of your project
+- you've set values in GlobalSettings.plist or .appledoc.plist for --project-company, --company-id
 
 The script looks at the remotes configured in the repo to try to work out what your github
 user name is, so that it can generate the correct urls for a docset feed.

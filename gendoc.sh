@@ -78,6 +78,7 @@ $git clone "$originaldirectory" "$tempdir/branch"
 
 if $git show-ref --tags --quiet --verify -- "refs/heads/$docbranch"
 then
+    git fetch origin $docbranch
     pushd "$tempdir/branch" > /dev/null
     echo "Checking out $docbranch branch"
     $git checkout $docbranch
@@ -120,10 +121,12 @@ popd > /dev/null
 
 # if publishing is on, push the documentation pages, otherwise echo out the command that would push them
 if $publish ; then
-    git push $githubrepo $docbranch:$docbranch
+    git push --force $githubrepo $docbranch:$docbranch
+    echo "Documentation published to http://$githubuser.github.io/$projectname/$docdirectory"
 else
     echo "To push the documentation changes, do:"
     echo "git push $githubrepo $docbranch:$docbranch"
+    echo "Documentation will be published to http://$githubuser.github.io/$projectname/$docdirectory"
 fi
 
 # echo info on the location of the feed
@@ -132,6 +135,6 @@ echo "Documentation changes may take a while to filter through..."
 
 # open the top of the documentation pages in the browser
 if $open ; then
-    open "http://$githubuser.github.com/$projectname/$docdirectory"
+    open "http://$githubuser.github.io/$projectname/$docdirectory"
 fi
 
